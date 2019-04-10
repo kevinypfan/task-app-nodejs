@@ -36,6 +36,7 @@ function genToken() {
 }
 
 app.use(express.json());
+app.use(express.static('./client'))
 
 app.get('/accounts', (req, res) => {
     res.send(accounts);
@@ -113,7 +114,8 @@ app.post('/tasks', authMiddleware, (req, res) => {
         title,
         description,
         completed: false,
-        owner: req.user.id
+        owner: req.user.id,
+        timestamp: Date.now()
     };
     tasks.push(task);
     res.send({

@@ -1,3 +1,5 @@
+const { accounts } = require('../utils/data');
+
 const authMiddleware = (req, res, next) => {
     if (!req.header('Authorization'))
         return res.status(401).send({ message: '請設定token!' });

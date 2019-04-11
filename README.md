@@ -58,7 +58,7 @@ control+d
 
 ### Arrow Funtion
 
-```javascript=
+```javascript
 //原本的寫法
 function funtionName( param1, param2, ... )
 {
@@ -118,7 +118,7 @@ const tasks = [
 
 查詢所有用戶 API：
 
-```javascript=
+```javascript
 app.get('/accounts', (req, res) => {
     res.send(accounts);
 });
@@ -128,7 +128,7 @@ app.get('/accounts', (req, res) => {
 
 會員註冊 API：
 
-```javascript=
+```javascript
 app.post('/signup', (req, res) => {
     const { name, email, password } = req.body;
     const findOne = accounts.find(e => e.email === email);
@@ -162,7 +162,7 @@ UUID:
 
 genToken 方法：
 
-```javascript=
+```javascript
 function genToken() {
     const date = Date.now().toString();
     const base64Date = Buffer.from(date).toString('base64');
@@ -178,7 +178,7 @@ function genToken() {
 
 會員登入 API：
 
-```javascript=
+```javascript
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
     const user = accounts.find(e => e.email === email);
@@ -201,7 +201,7 @@ app.post('/login', (req, res) => {
 
 新增 Task API：
 
-```javascript=
+```javascript
 app.post('/tasks', authMiddleware, (req, res) => {
     const { title, description } = req.body;
     if (!title)
@@ -227,7 +227,7 @@ app.post('/tasks', authMiddleware, (req, res) => {
 
 登入認證 Middleware：
 
-```javascript=
+```javascript
 const authMiddleware = (req, res, next) => {
     const token = req.header('Authorization').split(' ')[1];
     const user = accounts.find(e => e.tokens.indexOf(token) !== -1);
@@ -244,7 +244,7 @@ const authMiddleware = (req, res, next) => {
 
 刪除 API：
 
-```javascript=
+```javascript
 app.delete('/task/:id', authMiddleware, (req, res) => {
     const task = tasks.find(e => e.id === req.params.id);
     if (!task)
@@ -267,7 +267,7 @@ app.delete('/task/:id', authMiddleware, (req, res) => {
 
 任務完成 API：
 
-```javascript=
+```javascript
 app.patch('/task/:id', authMiddleware, (req, res) => {
     const task = tasks.find(e => e.id === req.params.id);
     if (!task)
@@ -291,7 +291,7 @@ app.patch('/task/:id', authMiddleware, (req, res) => {
 
 列出全部的任務 API：
 
-```javascript=
+```javascript
 app.get('/tasks', (req, res) => {
     const populateTasks = tasks.map(task => ({
         ...task,
@@ -305,7 +305,7 @@ app.get('/tasks', (req, res) => {
 
 列出個人的任務 API：
 
-```javascript=
+```javascript
 app.get('/ownTasks', authMiddleware, (req, res) => {
     const ownTasks = tasks.filter(task => task.owner === req.user.id);
     res.send(ownTasks);

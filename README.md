@@ -78,7 +78,7 @@ var functionName = ( param1, param2, ... ) => {
 
 會員資料格式：
 
-```json
+```javascript
 const accounts = [
     {
         id: uuidv4(), //require("uuid/v4")
@@ -95,19 +95,18 @@ const accounts = [
         tokens: []
     }
 ];
-
 ```
 
 ---
 
 任務資料格式：
 
-```json
+```javascript
 const tasks = [
     {
         id: uuidv4(),
-        title: "hello",
-        description: "world",
+        title: 'hello',
+        description: 'world',
         completed: false,
         owner: req.user.id
     }

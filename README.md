@@ -78,7 +78,7 @@ var functionName = ( param1, param2, ... ) => {
 
 會員資料格式：
 
-```jsonld=
+```json
 const accounts = [
     {
         id: uuidv4(), //require("uuid/v4")
@@ -102,7 +102,7 @@ const accounts = [
 
 任務資料格式：
 
-```json=
+```json
 const tasks = [
     {
         id: uuidv4(),

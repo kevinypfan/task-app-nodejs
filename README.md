@@ -1,54 +1,66 @@
 # Express Todo List Back-End
 
+教學影片連結(Youtube):
+https://youtu.be/TAXNRZS1c3Y
+
+github link:
+https://github.com/kevinypfan/task-app-nodejs
+
+gitlab link:
+https://gitlab.nuuclab.club/lab305/task-app-nodejs/tree/master
+
+postman cellections:
+https://www.getpostman.com/collections/7bbd77ddafcead76b9fc
+
 ---
 
 測試自打在這裡：HELLO DOG
-░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌ 
-░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐ 
-░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐ 
-░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐ 
-░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌ 
-░░▐▒▒▒▄█▄▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌ 
-░░▌░░█▀█▀▒▒▒▒█▄▀█ ▒▒▒▒▒▒▒█▒▐ 
-░▐░░░▒▒▒▒▒▒▒▒███▀▒▒░░░▒▒▒▀▄▌ 
-░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌ 
-▌▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐ 
-▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌ 
-▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▀▀█▀▀▒░▒░▒▒▐ 
-░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▀█▀▒░▒░▒▒▒▌ 
-░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄█▄▄▒▒▄▒▒▐ 
-░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▀▒▒▒▌ 
-░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀ 
+░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌
+░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐
+░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐
+░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐
+░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌
+░░▐▒▒▒▄█▄▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌
+░░▌░░█▀█▀▒▒▒▒█▄▀█ ▒▒▒▒▒▒▒█▒▐
+░▐░░░▒▒▒▒▒▒▒▒███▀▒▒░░░▒▒▒▀▄▌
+░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌
+▌▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐
+▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌
+▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▀▀█▀▀▒░▒░▒▒▐
+░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒▀█▀▒░▒░▒▒▒▌
+░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒▄▄█▄▄▒▒▄▒▒▐
+░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▀▒▒▒▌
+░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀
 ░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄—
 
-／　　Ｏ　|￣|　Ｏ　　╮  /
-｜　　　　/　|　　　　｜ )))))))))    　FBI Open up！！！ 
-＼、.　　├—┤　　　／     \ 
+／　　Ｏ　|￣|　Ｏ　　 ╮ /
+｜　　　　/　|　　　　｜ ))))))))) 　 FBI Open up！！！
+＼、.　　 ├—┤ 　　　／ \
 <img src="https://steamuserimages-a.akamaihd.net/ugc/940589313738467676/E1537FA87039584C178F3050C4321506AF475904/">
 周師父好!!!!!!!!!!<<0.0
 Excaliber~~~~~~~~~~
 老闆萬歲~~~~
-22k萬歲~~~~~~~
+22k 萬歲~~~~~~~
 $A$
 龜~~派氣功=w=刪除線?
 
 $\(MoM)/$
 OAO...
 uuid => 唯一 => University Unique Identifier
-uuidv4()=>uuid第四版的函式
+uuidv4()=>uuid 第四版的函式
 {{url}}=>環境
 undefined=false
 control+d
 
-
--------
+---
 
 ## ES6 新增
+
 ### Arrow Funtion
 
 ```javascript=
 //原本的寫法
-function funtionName( param1, param2, ... ) 
+function funtionName( param1, param2, ... )
 {
     // some content...
 }
@@ -61,14 +73,6 @@ var functionName = ( param1, param2, ... ) => {
 // 當參數( param, parameter )只有一個的時候，小括號可以省略。
 // 當函式內容只有一句時，大括號可以省略。
 ```
-
--------
-
-gitlab link:
-https://gitlab.nuuclab.club/lab305/task-app-nodejs/tree/master
-
-postman cellections:
-https://www.getpostman.com/collections/7bbd77ddafcead76b9fc
 
 ---
 
@@ -97,6 +101,7 @@ const accounts = [
 ---
 
 任務資料格式：
+
 ```json=
 const tasks = [
     {
@@ -109,10 +114,9 @@ const tasks = [
 ];
 ```
 
-
 ---
 
-查詢所有用戶API：
+查詢所有用戶 API：
 
 ```javascript=
 app.get('/accounts', (req, res) => {
@@ -122,7 +126,7 @@ app.get('/accounts', (req, res) => {
 
 ---
 
-會員註冊API：
+會員註冊 API：
 
 ```javascript=
 app.post('/signup', (req, res) => {
@@ -144,20 +148,20 @@ app.post('/signup', (req, res) => {
     res.set('Authorization', token);
     res.status(201).send(newUser);
 });
-
 ```
 
 ---
 
 UUID:
 
-通用唯一辨識碼（英語：Universally Unique Identifier，UUID），是用於電腦體系中以辨識資訊數目的一個128位元識別元，還有相關的術語：全域唯一識別元（GUID）。
+通用唯一辨識碼（英語：Universally Unique Identifier，UUID），是用於電腦體系中以辨識資訊數目的一個 128 位元識別元，還有相關的術語：全域唯一識別元（GUID）。
 
-根據標準方法生成，不依賴中央機構的註冊和分配，UUID具有唯一性，這與其他大多數編號方案不同。重複UUID碼機率接近零，可以忽略不計。
+根據標準方法生成，不依賴中央機構的註冊和分配，UUID 具有唯一性，這與其他大多數編號方案不同。重複 UUID 碼機率接近零，可以忽略不計。
 
 ---
 
 genToken 方法：
+
 ```javascript=
 function genToken() {
     const date = Date.now().toString();
@@ -168,12 +172,11 @@ function genToken() {
         .replace(/\//g, '_');
     return base64url;
 }
-
 ```
 
 ---
 
-會員登入API：
+會員登入 API：
 
 ```javascript=
 app.post('/login', (req, res) => {
@@ -192,12 +195,12 @@ app.post('/login', (req, res) => {
     user.tokens.push(token);
     res.send(user);
 });
-
 ```
 
 ---
 
-新增Task API：
+新增 Task API：
+
 ```javascript=
 app.post('/tasks', authMiddleware, (req, res) => {
     const { title, description } = req.body;
@@ -218,12 +221,12 @@ app.post('/tasks', authMiddleware, (req, res) => {
         owner: req.user
     });
 });
-
 ```
 
 ---
 
 登入認證 Middleware：
+
 ```javascript=
 const authMiddleware = (req, res, next) => {
     const token = req.header('Authorization').split(' ')[1];
@@ -235,12 +238,12 @@ const authMiddleware = (req, res, next) => {
     req.user = user;
     next();
 };
-
 ```
 
 ---
 
-刪除API：
+刪除 API：
+
 ```javascript=
 app.delete('/task/:id', authMiddleware, (req, res) => {
     const task = tasks.find(e => e.id === req.params.id);
@@ -258,12 +261,12 @@ app.delete('/task/:id', authMiddleware, (req, res) => {
         message: `deleted task id: ${req.params.id}`
     });
 });
-
 ```
 
 ---
 
-任務完成API：
+任務完成 API：
+
 ```javascript=
 app.patch('/task/:id', authMiddleware, (req, res) => {
     const task = tasks.find(e => e.id === req.params.id);
@@ -282,12 +285,12 @@ app.patch('/task/:id', authMiddleware, (req, res) => {
     }
     res.send(task);
 });
-
 ```
 
 ---
 
-列出全部的任務API：
+列出全部的任務 API：
+
 ```javascript=
 app.get('/tasks', (req, res) => {
     const populateTasks = tasks.map(task => ({
@@ -300,37 +303,45 @@ app.get('/tasks', (req, res) => {
 
 ---
 
-列出個人的任務API：
+列出個人的任務 API：
+
 ```javascript=
 app.get('/ownTasks', authMiddleware, (req, res) => {
     const ownTasks = tasks.filter(task => task.owner === req.user.id);
     res.send(ownTasks);
 });
-
 ```
---- 
-####  補充常用http status code
+
+---
+
+#### 補充常用 http status code
+
 ![](https://i.imgur.com/ZA7BnnO.png)
 
---- 
-### 補充常用es6 function
+---
 
-#### find  會把第一個找到的回傳（return 是true時）
-這邊只會回傳12
+### 補充常用 es6 function
+
+#### find 會把第一個找到的回傳（return 是 true 時）
+
+這邊只會回傳 12
+
 ```js=
-
 var array1 = [5, 12, 8, 130, 44];
 
 var found = array1.find(function(element) {
-  return element > 10;
+    return element > 10;
 });
-
 ```
+
 ---
+
 #### map 會把陣列每個值做處理
-這邊會把每個陣列*2處理回傳
-新的陣列是map1 [2, 8, 18, 32]
-``` js
+
+這邊會把每個陣列\*2 處理回傳
+新的陣列是 map1 [2, 8, 18, 32]
+
+```js
 var array1 = [1, 4, 9, 16];
 
 // pass a function to map
@@ -338,4 +349,3 @@ const map1 = array1.map(x => x * 2);
 
 console.log(map1);
 ```
-

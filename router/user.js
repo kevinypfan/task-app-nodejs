@@ -1,48 +1,59 @@
 const express = require('express');
 const router = express.Router();
-const uuidv4 = require('uuid/v4');
+// const uuidv4 = require('uuid/v4');
+const mongoose = require('mongoose');
+const authMiddleware = require('../middleware/authMiddleware')
+const User = require('../models/user')
 const { genToken } = require('../utils/helpers');
 const { accounts, tasks } = require('../utils/data');
 
-router.get('/accounts', (req, res) => {
-    res.send(accounts);
-});
 
 router.post('/signup', (req, res) => {
-    const { name, email, password } = req.body;
-    const findOne = accounts.find(e => e.email === email);
-    if (findOne)
-        return res.status(400).send({
-            message: '您的email已重複!'
-        });
+    const { first_name, family_name, email, password } = req.body;
+    // const findOne = accounts.find(e => e.email === email);
+    // if (findOne)
+    //     return res.status(400).send({
+    //         message: '您的email已重複!'
+    //     });
+
     const token = genToken();
-    const newUser = {
-        id: uuidv4(),
-        name,
+    const tokens = []
+
+    tokens.push({ token })
+    console.log(tokens)
+    const user = new User({
+        first_name,
+        family_name,
         email,
         password,
-        tokens: [token]
-    };
-    accounts.push(newUser);
-    res.set('Authorization', token);
-    res.status(201).send(newUser);
+        tokens
+    });
+    user.save().then(result => {
+        res.send(result)
+    }).catch(err => res.status(402).send(err))
 });
 
+
 router.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    const user = accounts.find(e => e.email === email);
-    if (!user)
-        return res.status(404).send({
-            message: '找不到此用戶!'
-        });
-    if (user.password !== password)
-        return res.status(401).send({
-            message: '使用者密碼錯誤!'
-        });
-    const token = genToken();
-    res.set('Authorization', token);
-    user.tokens.push(token);
-    res.send(user);
-});
+    const { email, password } = req.body
+    User.findByCredentials(email, password).then((user) => {
+        const token = genToken();
+        user.tokens.push({ token })
+        user.save().then(result => {
+            res.set('Authorization', token);
+            res.send(user);
+        }).catch(err => res.status(402).send(err))
+
+    })
+})
+
+
+router.delete('/logout', authMiddleware, (req, res) => {
+    req.user.removeToken(req.token).then(() => {
+        res.status(200).send('success');
+    }).catch(() => {
+        res.status(400).send('fail');
+    })
+})
 
 module.exports = router;

@@ -1,7 +1,16 @@
 const express = require('express');
+const mongoose = require('mongoose');
+
+// const User = require('./models/user')
 
 const taskRouter = require('./router/task');
 const userRouter = require('./router/user');
+
+mongoose.connect('mongodb://localhost/test', { useCreateIndex: true, useNewUrlParser: true });
+
+var db = mongoose.connection;
+
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const PORT = 3000;
 

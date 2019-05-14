@@ -28,7 +28,6 @@ const UserSchema = new Schema({
     },
     createAt: {
         type: Date,
-        default: new Date()
 
     },
     updateAt: {
@@ -38,7 +37,7 @@ const UserSchema = new Schema({
     tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
     tokens: [{
         token: { type: String },
-        // sourceIP: { type: String }
+
     }]
 
 });
@@ -48,9 +47,6 @@ UserSchema.virtual('name').get(function () {
     return this.family_name + ', ' + this.first_name;
 })
 
-UserSchema.virtual('url').get(function () {
-    return '/catalog/author/' + this._id;
-})
 
 // 存密碼時加密
 UserSchema.pre('save', function (next) {
@@ -64,6 +60,8 @@ UserSchema.pre('save', function (next) {
         next();
     }
 })
+
+
 
 
 // 比較密碼

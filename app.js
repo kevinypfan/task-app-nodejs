@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-// const User = require('./models/user')
+const { init } = require('./utils/data')
 
 const taskRouter = require('./router/task');
 const userRouter = require('./router/user');
@@ -15,7 +15,7 @@ var db = mongoose.connection;
 const PORT = 3000;
 
 const app = express();
-
+init()
 app.use(express.json());
 app.use(express.static('./client'));
 

@@ -1,77 +1,108 @@
 const express = require('express');
 const authMiddleware = require('../middleware/authMiddleware');
-const uuidv4 = require('uuid/v4');
+const Task = require('../models/task')
+const User = require('../models/user')
 const { accounts, tasks } = require('../utils/data');
 
 const router = express.Router();
 
-router.get('/tasks', (req, res) => {
-    const populateTasks = tasks.map(task => ({
-        ...task,
-        owner: accounts.find(e => e.id === task.owner)
-    }));
-    res.send(populateTasks);
+router.get('/tasks', async (req, res) => {
+    try {
+        const Tasks = await Task.find()
+        if (Tasks.length == 0) {
+            throw ("找不到相關清單任務")
+        }
+        res.send(Tasks)
+    } catch (error) {
+        res.status(404).send(error)
+    }
 });
 
-router.get('/ownTasks', authMiddleware, (req, res) => {
-    const ownTasks = tasks.filter(task => task.owner === req.user.id);
-    res.send(ownTasks);
+router.get('/ownTasks', authMiddleware, async (req, res) => {
+    try {
+        const ownTasks = await Task.find({ author: req.user._id })
+        if (ownTasks.length == 0) {
+            throw ("找不到相關清單任務")
+        }
+        res.send(ownTasks)
+    } catch (error) {
+        res.status(404).send(error)
+    }
+
 });
 
-router.post('/tasks', authMiddleware, (req, res) => {
+router.post('/tasks', authMiddleware, async (req, res) => {
     const { title, description } = req.body;
-    if (!title)
-        return res.status(400).send({
-            message: '任務至少要有標題!'
-        });
-    const task = {
-        id: uuidv4(),
+    const task = new Task({
         title,
         description,
         completed: false,
-        owner: req.user.id,
-        timestamp: Date.now()
-    };
-    tasks.push(task);
-    res.send({
-        ...task,
-        owner: req.user
+        author: req.user._id,
+        createAt: Date.now()
     });
+
+    task.save().then(result => {
+        User.findOne({ _id: req.user._id })
+            .update({ $push: { "tasks": result._id } })
+            .then(user => {
+                console.log(user)
+                next()
+            }).catch(error => {
+                console.log(error)
+            })
+
+        res.send(result)
+    }).catch(error => {
+        res.status(402).send(error)
+    });
+
 });
 
-router.patch('/task/:id', authMiddleware, (req, res) => {
-    const task = tasks.find(e => e.id === req.params.id);
+router.patch('/task/:id', authMiddleware, async (req, res) => {
+    const task = await Task.findOne({ _id: req.params.id })
+
+    console.log(task.author.toString() == req.user._id.toString())
+
     if (!task)
         return res.status(404).send({
             message: '找不到此筆任務!'
         });
-    if (req.user.id !== task.owner)
+    if (req.user._id.toString() != task.author.toString())
+
         return res.status(403).send({
             message: '您的權限不足!'
         });
     if (req.query.completed) {
-        task.completed = req.query.completed === 'true';
-    } else {
-        task.completed = !task.completed;
+        task.completed = req.query.completed;
+        try {
+            const result = await task.save()
+            if (!result) {
+                throw ("fail")
+            }
+            res.send(result);
+        } catch (error) {
+            res.status(402).send(error)
+        }
+
     }
-    res.send(task);
+
 });
 
-router.delete('/task/:id', authMiddleware, (req, res) => {
-    const task = tasks.find(e => e.id === req.params.id);
-    if (!task)
-        return res.status(404).send({
-            message: '找不到此筆任務!'
-        });
-    if (req.user.id !== task.owner)
-        return res.status(403).send({
-            message: '您的權限不足!'
-        });
-    const taskIndex = tasks.map(e => e.id).indexOf();
-    tasks.splice(taskIndex, 1);
-    res.send({
-        message: `deleted task id: ${req.params.id}`
-    });
+router.delete('/task/:id', authMiddleware, async (req, res) => {
+    try {
+        const result = await Task.findOneAndDelete({
+            _id: req.params.id,
+            author: req.user._id
+        })
+        if (!result) {
+            throw ("找不到任務")
+        }
+        res.send(result)
+    } catch (error) {
+        res.status(404).send(error)
+    }
+
+
 });
 
 module.exports = router;

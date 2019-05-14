@@ -1,4 +1,3 @@
-// const { accounts } = require('../utils/data');
 const User = require('../models/user')
 
 const authMiddleware = async (req, res, next) => {

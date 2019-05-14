@@ -1,6 +1,5 @@
 const express = require('express');
-const router = express.Router();
-// const uuidv4 = require('uuid/v4');
+const userRouter = express.Router();
 const mongoose = require('mongoose');
 const authMiddleware = require('../middleware/authMiddleware')
 const User = require('../models/user')
@@ -8,13 +7,8 @@ const { genToken } = require('../utils/helpers');
 const { accounts, tasks } = require('../utils/data');
 
 
-router.post('/signup', (req, res) => {
+userRouter.post('/signup', (req, res) => {
     const { first_name, family_name, email, password } = req.body;
-    // const findOne = accounts.find(e => e.email === email);
-    // if (findOne)
-    //     return res.status(400).send({
-    //         message: '您的email已重複!'
-    //     });
 
     const token = genToken();
     const tokens = []
@@ -34,7 +28,7 @@ router.post('/signup', (req, res) => {
 });
 
 
-router.post('/login', (req, res) => {
+userRouter.post('/login', (req, res) => {
     const { email, password } = req.body
     User.findByCredentials(email, password).then((user) => {
         const token = genToken();
@@ -48,7 +42,7 @@ router.post('/login', (req, res) => {
 })
 
 
-router.delete('/logout', authMiddleware, (req, res) => {
+userRouter.delete('/logout', authMiddleware, (req, res) => {
     req.user.removeToken(req.token).then(() => {
         res.status(200).send('success');
     }).catch(() => {
@@ -56,4 +50,20 @@ router.delete('/logout', authMiddleware, (req, res) => {
     })
 })
 
-module.exports = router;
+userRouter.delete('/logout', authMiddleware, (req, res) => {
+    req.user.removeToken(req.token).then(() => {
+        res.status(200).send('success');
+    }).catch(() => {
+        res.status(400).send('fail');
+    })
+})
+
+userRouter.get('/me', authMiddleware, (req, res) => {
+    const user = req.user
+    if (!user) {
+        res.status(404).send('找不到使用者')
+    }
+    res.send(user)
+})
+
+module.exports = userRouter;

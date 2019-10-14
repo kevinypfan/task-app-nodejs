@@ -12,9 +12,9 @@ router.get('/tasks', async (req, res) => {
         if (Tasks.length == 0) {
             throw ("找不到相關清單任務")
         }
-        res.send(Tasks)
+        return res.send(Tasks)
     } catch (error) {
-        res.status(404).send(error)
+        return res.status(404).send(error)
     }
 });
 
@@ -24,9 +24,9 @@ router.get('/ownTasks', authMiddleware, async (req, res) => {
         if (ownTasks.length == 0) {
             throw ("找不到相關清單任務")
         }
-        res.send(ownTasks)
+        return res.send(ownTasks)
     } catch (error) {
-        res.status(404).send(error)
+        return res.status(404).send(error)
     }
 
 });
@@ -51,9 +51,9 @@ router.post('/tasks', authMiddleware, async (req, res) => {
                 console.log(error)
             })
 
-        res.send(result)
+            return  res.send(result)
     }).catch(error => {
-        res.status(402).send(error)
+        return res.status(402).send(error)
     });
 
 });
@@ -79,9 +79,9 @@ router.patch('/task/:id', authMiddleware, async (req, res) => {
             if (!result) {
                 throw ("fail")
             }
-            res.send(result);
+            return res.send(result);
         } catch (error) {
-            res.status(402).send(error)
+            return res.status(402).send(error)
         }
 
     }
@@ -97,9 +97,9 @@ router.delete('/task/:id', authMiddleware, async (req, res) => {
         if (!result) {
             throw ("找不到任務")
         }
-        res.send(result)
+        return res.send(result)
     } catch (error) {
-        res.status(404).send(error)
+        return res.status(404).send(error)
     }
 
 
